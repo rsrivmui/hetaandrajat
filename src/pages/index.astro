@@ -23,37 +23,35 @@ const WEDDING_ISO = "2026-02-07T19:00:00+05:30"; // change later if needed
 
     <script is:inline>
       (() => {
-        const weddingISO = "2026-02-07T19:00:00+05:30";
-        const target = new Date(weddingISO).getTime();
+        const targetISO = "2026-02-05T00:00:00+05:30"; // IST target
+        const target = new Date(targetISO).getTime();
         const el = document.getElementById("countdown");
 
-        if (!el || Number.isNaN(target)) {
-          // If something is off, fail gracefully
-          if (el) el.textContent = "Countdown unavailable";
-          return;
+        function pad(n) {
+          return String(n).padStart(2, "0");
         }
 
         function tick() {
-          const now = Date.now();
+          const now = Date.now(); // user's current time
           let diff = target - now;
 
           if (diff <= 0) {
-            el.textContent = "Today’s the day ✨";
+            el.textContent = "It's time ✨";
             return;
           }
 
-          const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
           diff %= 1000 * 60 * 60 * 24;
 
-          const h = Math.floor(diff / (1000 * 60 * 60));
+          const hours = Math.floor(diff / (1000 * 60 * 60));
           diff %= 1000 * 60 * 60;
 
-          const m = Math.floor(diff / (1000 * 60));
+          const mins = Math.floor(diff / (1000 * 60));
           diff %= 1000 * 60;
 
-          const s = Math.floor(diff / 1000);
+          const secs = Math.floor(diff / 1000);
 
-          el.textContent = `${d} days · ${h} hours · ${m} minutes · ${s} seconds`;
+          el.textContent = `${days} days · ${pad(hours)}:${pad(mins)}:${pad(secs)} (IST)`;
         }
 
         tick();
