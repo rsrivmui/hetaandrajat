@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background: radial-gradient(circle at top, #fff6f0, #f6efe9);
+    font-family: Georgia, serif;
+    color: #2b2b2b;
+    min-height: 100vh;
+  }
+  
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+  
+  .tagline {
+    font-size: 1.2rem;
+    opacity: 0.75;
+    margin-bottom: 2.5rem;
+  }
+  
+  .countdown {
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    opacity: 0.9;
+  }
+  

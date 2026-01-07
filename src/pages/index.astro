@@ -1,0 +1,49 @@
+---
+const weddingDate = "2026-02-07T19:00:00+05:30"; // CHANGE THIS LATER IF NEEDED
+---
+
+<html lang="en">
+  <head>
+    <title>Heta × Rajat</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Heta & Rajat — Light within light." />
+    <link rel="stylesheet" href="/global.css" />
+  </head>
+
+  <body>
+    <main class="hero">
+      <h1>Heta × Rajat</h1>
+      <p class="tagline">Light within light.</p>
+      <div id="countdown" class="countdown">Loading…</div>
+    </main>
+
+    <script>
+      const target = new Date({JSON.stringify(weddingDate)}).getTime();
+      const el = document.getElementById("countdown");
+
+      function tick() {
+        const now = Date.now();
+        let diff = target - now;
+
+        if (diff <= 0) {
+          el.textContent = "Today’s the day ✨";
+          return;
+        }
+
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        diff %= 1000 * 60 * 60 * 24;
+        const h = Math.floor(diff / (1000 * 60 * 60));
+        diff %= 1000 * 60 * 60;
+        const m = Math.floor(diff / (1000 * 60));
+        diff %= 1000 * 60;
+        const s = Math.floor(diff / 1000);
+
+        el.textContent = `${d} days · ${h} hours · ${m} minutes · ${s} seconds`;
+      }
+
+      tick();
+      setInterval(tick, 1000);
+    </script>
+  </body>
+</html>
